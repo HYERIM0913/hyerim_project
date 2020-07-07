@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            {{ appmessage }}
+        </div>
+        <div id="app-2">
+            <span :title="message">
+                내위에 잠시 마우스를 올리면 동적으로 바인딩된 title을 볼 수있습니다.
+            </span>
+        </div>
+        <div id="start">
+            <a :href="link1">페이지 이동</a>
+            <img :src="src1" alt="fron.png">
+        </div>
+        <div id="start1">
+            <h1>오늘의 날짜: {{ date1 }}</h1>
+            <h1>오늘의 날짜: {{ date.getFullYear() }}-{{ parseInt(date.getMonth())+1 }}-{{ date.getDay() }}</h1>
+        </div>
+        <div id="start2">
+            <input type="text" name="" :value="text">
+            <h1>{{ text }}</h1>
+        </div>
+        <div id="start3">
+            <input type="text" name="" v-model:value="text">
+            <h1>{{ text }}</h1>
+        </div>
+        <script>
+            var app= new Vue({
+                el: '#app',
+                data: {
+                    appmessage: "안녕하세요 Vue!"
+                }
+            })
+            var app2 = new Vue({
+                el: '#app-2',
+                data: {
+                    message:'이 페이지는'+new Date()+'에 로드되었습니다.'
+                }
+            })
+            var app3 = new Vue({
+                el: '#start',
+                data () {
+                    return{
+                        link1:"http://www.naver.com",
+                        src1:"logo.jpg"
+                    }
+                }
+            })
+            var app4 = new Vue({
+                el: '#start1',
+                data() {
+                    return{
+                        date:new Date(),
+                        date1:new Date()
+                    }
+                }
+            })
+            var app5 = new Vue({
+                el:'#start2',
+                data() {
+                    return{
+                        text:'hello world'
+                    }
+                }
+            })
+            var app6 = new Vue({
+                el:'#start3',
+                data() {
+                    return{
+                        text:''
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
